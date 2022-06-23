@@ -1,17 +1,28 @@
-import "./App.css";
-
-import categories from "./components/CategoriesMenu/CategoriesMenu";
+import React from "react";
+import Home from "./routes/home/home.component";
+import Navigation from "./routes/navigation/navigation.component";
+import { Routes, Route } from "react-router-dom";
 
 import "./categories.styles.scss";
+import "./App.css";
 
-import TileCategory from "./components/Tile/TileCategory";
+const Shop = () => {
+  return (
+    <div>
+      <h1>This is the Shop</h1>
+    </div>
+  );
+};
 
 const App = () => {
   return (
-    <main>
-      <h1>Crown Clothing</h1>
-      <TileCategory categories={categories} />
-    </main>
+    <Routes>
+      <Route path="/" element={<Navigation />}>
+        <Route path="/" element={<Home />}>
+          <Route path="/shop" element={<Shop />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 };
 
